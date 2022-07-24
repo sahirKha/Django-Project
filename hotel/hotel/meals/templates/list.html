@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex align-items-center">
+  <div class="container position-relative text-center text-lg-start" data-aos="zoom-in" data-aos-delay="100">
+    <div class="row">
+      <div class="col-lg-8">
+        <h1>Welcome to <span>Restaurantly</span></h1>
+        <h2>Delivering great food for more than 18 years!</h2>
+
+        <div class="btns">
+          <a href="#menu" class="btn-menu animated fadeInUp scrollto">Our Menu</a>
+          <a href="#book-a-table" class="btn-book animated fadeInUp scrollto">Book a Table</a>
+        </div>
+      </div>
+      <div class="col-lg-4 d-flex align-items-center justify-content-center position-relative" data-aos="zoom-in" data-aos-delay="200">
+        <a href="https://www.youtube.com/watch?v=GlrxcuEDyF8" class="glightbox play-btn"></a>
+      </div>
+
+    </div>
+  </div>
+</section><!-- End Hero -->
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu section-bg">
+      <div class="container" data-aos="fade-up">
+
+        <div class="section-title">
+          <h2>Menu</h2>
+          <p>Check Our Tasty Menu</p>
+        </div>
+
+        <div class="row" data-aos="fade-up" data-aos-delay="100">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="menu-flters">
+              
+              <li class="nav-item">
+                <a class="nav-link" id="{{category}}-tab" data-toggle="tab" href="#{{category}}" role="tab" aria-controls="{{category}}" aria-selected="{{category}}">Foods</a>
+              </li>
+            
+
+            </ul>
+          </div>
+        </div>
+        {% for category in categories %}
+
+        <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
+
+
+          {% for meal in meal_list %}
+          {% if meal.category == category %}
+
+          <div class="col-lg-6 menu-item filter-starters">
+            <div class="menu-content">
+              <a href="{% url 'meals:meal_detail' meal.slug %}">{{meal.name}}</a><span>{{meal.price}}</span>
+            </div>
+            <div class="menu-ingredients">
+              {{meal.description}}
+            </div>
+          </div>
+          {% endif %}
+          
+          {% endfor %}
+
+
+
+
+        </div>
+
+        {% endfor %}
+
+      </div>
+    </section><!-- End Menu Section -->
+
+{% endblock body %}
+
+   

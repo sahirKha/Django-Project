@@ -1,0 +1,21 @@
+<h1>Meal Detail</h1>
+
+{% extends 'base.html' %}
+
+{% block body %}
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu section-bg">
+      <div class="container" data-aos="fade-up">
+        <img class="meal_img"src="{{meal_detail.image.url}}">
+        <h2>{{meal_detail}}</h2>
+        <p>{{meal_detail.description}}</p>
+        <p>For:{{meal_detail.people}} People</p>
+        <p>Price:{{meal_detail.price}}</p>
+    </div>
+
+      </div>
+    </section><!-- End Menu Section -->
+
+{% endblock body %}
+
